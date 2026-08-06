@@ -7,6 +7,8 @@ service:
   type: NodePort
   httpPort: 80
   dnsPort: 53
+  httpNodePort: 30080
+  dnsNodePort: 30053
 
 env:
   TZ: "America/Mexico_City"

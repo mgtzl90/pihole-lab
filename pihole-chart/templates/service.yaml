@@ -5,15 +5,15 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.httpPort }}
+    - port: {{ .Values.service.httpNodePort }}
       targetPort: 80
       protocol: TCP
       name: http
-    - port: {{ .Values.service.dnsPort }}
+    - port: {{ .Values.service.dnsNodePort}}
       targetPort: 53
       protocol: TCP
       name: dns-tcp
-    - port: {{ .Values.service.dnsPort }}
+    - port: {{ .Values.service.dnsNodePort }}
       targetPort: 53
       protocol: UDP
       name: dns-udp
