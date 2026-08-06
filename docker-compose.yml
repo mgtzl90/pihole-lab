@@ -1,0 +1,10 @@
+services:
+  localstack:
+    container_name: localstack_aws
+    image: localstack/localstack:3.0
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - "./.localstack:/var/lib/localstack"

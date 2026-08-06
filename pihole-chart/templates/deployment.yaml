@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pihole
+  template:
+    metadata:
+      labels:
+        app: pihole
+    spec:
+      containers:
+        - name: pihole
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: TZ
+              value: "{{ .Values.env.TZ }}"
+            - name: WEBPASSWORD
+              value: "{{ .Values.env.WEBPASSWORD }}"
+          ports:
+            - containerPort: 80
+              name: http
+            - containerPort: 53
+              name: dns-tcp
+              protocol: TCP
+            - containerPort: 53
+              name: dns-udp
+              protocol: UDP
+          volumeMounts:
+            - name: etc-pihole
+              mountPath: /etc/pihole
+            - name: etc-dnsmasq
+              mountPath: /etc/dnsmasq.d
+      volumes:
+        - name: etc-pihole
+          hostPath:
+            path: {{ .Values.persistence.etcPihole.hostPath }}
+        - name: etc-dnsmasq
+          hostPath:
+            path: {{ .Values.persistence.etcDnsmasq.hostPath }}

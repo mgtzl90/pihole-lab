@@ -1,0 +1,16 @@
+---
+- name: Preparar entorno host para Pi-hole
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Crear directorio para configuración de Pi-hole
+      file:
+        path: ./volumes/pihole/etc-pihole
+        state: directory
+        mode: '0755'
+
+    - name: Crear directorio para reglas de dnsmasq
+      file:
+        path: ./volumes/pihole/etc-dnsmasq.d
+        state: directory
+        mode: '0755'
