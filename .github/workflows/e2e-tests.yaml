@@ -16,7 +16,7 @@ jobs:
 
       - name: Instalar Chart con Helm
         run: |
-          helm install pihole . -n pihole --create-namespace
+          helm install pihole ./pihole-chart -n pihole --create-namespace
 
       - name: Esperar a que el Pod esté listo
         run: |
