@@ -1,0 +1,16 @@
+name: Helm Lint & Validation
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-helm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecuta helm lint
+        run: |
+          helm lint ./pihole-chart
