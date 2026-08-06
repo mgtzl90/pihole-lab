@@ -19,3 +19,12 @@ persistence:
     hostPath: "/var/pihole/etc-pihole"
   etcDnsmasq:
     hostPath: "/var/pihole/etc-dnsmasq.d"
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: false
+  capabilities:
+    drop:
+      - ALL
+    add:
+      - NET_ADMIN
