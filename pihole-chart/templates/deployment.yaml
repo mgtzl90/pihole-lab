@@ -12,7 +12,7 @@ spec:
       labels:
         app: pihole
     spec:
-      podSecurityContext:
+      SecurityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: pihole
