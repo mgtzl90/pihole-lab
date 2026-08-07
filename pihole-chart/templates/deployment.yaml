@@ -38,6 +38,12 @@ spec:
               mountPath: /etc/pihole
             - name: etc-dnsmasq
               mountPath: /etc/dnsmasq.d
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: run-volume
+              mountPath: /run
+            - name: log-volume
+              mountPath: /var/log
       volumes:
         - name: etc-pihole
           hostPath:
@@ -45,3 +51,9 @@ spec:
         - name: etc-dnsmasq
           hostPath:
             path: {{ .Values.persistence.etcDnsmasq.hostPath }}
+        - name: tmp-volume
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
+        - name: log-volume
+          emptyDir: {}
