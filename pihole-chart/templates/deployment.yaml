@@ -12,6 +12,8 @@ spec:
       labels:
         app: pihole
     spec:
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: pihole
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
