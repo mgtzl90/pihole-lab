@@ -12,7 +12,7 @@ service:
 
 env:
   TZ: "America/Mexico_City"
-  WEBPASSWORD: "admin123"
+  WEBPASSWORD: "admin"
 
 persistence:
   etcPihole:
