@@ -30,3 +30,7 @@ securityContext:
       - ALL
     add:
       - NET_ADMIN
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
